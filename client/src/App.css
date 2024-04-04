@@ -1,0 +1,32 @@
+.App {
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Header, content, footer */
+  min-height: 100vh; /* Full viewport height */
+}
+
+.App-header {
+  padding: 1rem;
+  background: #282c34;
+  color: white;
+  text-align: center;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.search-bar input {
+  margin-right: 0.5rem;
+}
+
+.search-results {
+  padding: 1rem;
+}
+
+.result-item {
+  margin-bottom: 0.5rem;
+}
+
+/*additional styles as needed */

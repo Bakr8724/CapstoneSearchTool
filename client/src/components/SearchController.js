@@ -1,7 +1,10 @@
+//SearchController.js
+//FR Perform Search/Enter Search Query
+//Captures user input and triggers the search
 import React, { useState } from 'react';
 import axios from 'axios';  // Import Axios
 
-function SearchBar({ setResults }) {  // Accept setResults as a prop
+function SearchController({ setResults }) {  // Accept setResults as a prop to pass results to the ResultPresenter
   const [query, setQuery] = useState('');
 
   const handleInputChange = (event) => {
@@ -13,17 +16,17 @@ function SearchBar({ setResults }) {  // Accept setResults as a prop
       const response = await axios.get('http://localhost:5000/search', {
         params: { query }
       });
-      setResults(response.data.items);
+      setResults(response.data.items); // Assume the response structure has items
       console.log('Search successful', response.data.items);
     } catch (error) {
       console.error('Search failed:', error);
       alert('Search failed');  // Notify the user that search failed
-      setResults([]);  // Reset the results on error
+      setResults([]);  // Reset the results on error to ensure ResultPresenter shows "No results found"
     }
   };
 
   return (
-    <div className="search-bar">
+    <div className="search-controller">
       <input
         type="text"
         placeholder="What are you researching today?"
@@ -35,4 +38,4 @@ function SearchBar({ setResults }) {  // Accept setResults as a prop
   );
 }
 
-export default SearchBar;
+export default SearchController;

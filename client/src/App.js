@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
+import SearchController from './components/SearchController';
 
 function App() {
   const [results, setResults] = useState([]);  // State to store search results
@@ -12,7 +12,7 @@ function App() {
         <h1>Logo Here</h1>
       </header>
       <main>
-        <SearchBar setResults={setResults} />
+        <SearchController setResults={setResults} />
         <SearchResults results={results} />
       </main>
       <footer>

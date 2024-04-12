@@ -1,3 +1,6 @@
+//ResultPresenter
+//FR: Display Search Results
+// It's responsible for the presentation layer, taking processed data and rendering them for the user.
 import React from 'react';
 
 const SearchResults = ({ results }) => {

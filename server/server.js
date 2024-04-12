@@ -1,4 +1,6 @@
 // server.js
+//SearchService
+//communicates with the Google Custom Search API
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');

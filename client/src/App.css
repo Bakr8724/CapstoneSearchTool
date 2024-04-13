@@ -2,6 +2,7 @@
   display: grid;
   grid-template-rows: auto 1fr auto; /* Header, content, footer */
   min-height: 100vh; /* Full viewport height */
+  background-image: linear-gradient(white #999999);
 }
 
 .App-header {
@@ -13,7 +14,8 @@
 
 /*scrollbar styling*/
 ::-webkit-scrollbar {
-  height: 10px;
+  height: 10px;  
+
 }
 /* Track */
 ::-webkit-scrollbar-track {
@@ -21,12 +23,14 @@
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #D3D3D3;
+  background: #dedede;
   border-radius: 15px;
+  background-clip: padding-box;
+  transition: .5s;
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #be1515;
+  background: #c7c7c7;
 }
 
 .search-bar {
@@ -74,8 +78,8 @@
 }
 
 .navbar button:hover{
-  background-color: #485457;
-  color: white;
+  color: #984435;
+  font-weight: bold;
 }
 
 .horizontal-scroll-container{
@@ -87,6 +91,7 @@
   gap: 20px;
   height: auto;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .result-container{

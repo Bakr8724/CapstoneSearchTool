@@ -17,16 +17,125 @@
   padding: 1rem;
 }
 
-.search-bar input {
-  margin-right: 0.5rem;
+.search-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); 
+  grid-template-rows: auto auto; 
+  width: 100%;
+}
+
+.search-controller {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    grid-column: span 8;
+}
+
+.search-controller input {
+  font-size: 15px;
+  padding: 20px;
+  padding-right: 40px;
+  border: 3px solid #b6b5b5; 
+  border-radius: 50px; 
+  width: 100%;
+}
+
+
+.search-box {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.search-box input:focus {
+  border-color: rgb(90, 116, 89); /* Adjust as needed */
+  outline: none; /* Removes the default outline */
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  cursor: pointer;
+  width: 50px;
+  transform: translateY(-50%);
+}
+
+.button-container {
+  display: flex;
+  grid-column: 6; 
+  grid-row: 2; 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+}
+
+.reattempt-search {
+  display: flex;
+  grid-column: 2; 
+  display: flex;
+  justify-content: right;
+  margin-left: 2px;
+}
+
+.refine-search {
+  display: flex;
+  grid-column: 1; 
+  display: flex;
+  justify-content: right;
+}
+
+.reattempt-search-button.btn {
+  background-color: rgb(90, 116, 89); 
+  border-color: rgb(90, 116, 89); 
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+  .reattempt-search-button.btn:hover {
+    background-color: rgb(66, 89, 72); 
+    border-color: #000; 
+  }
+
+.refine-search-button.btn {
+  background-color: rgb(153, 75, 72); 
+  border-color:  rgb(153, 75, 72);  
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.refine-search-button.btn:hover {
+  background-color: rgb(111, 26, 16);
+  border-color: #000; 
+}
+
+.keyword-button.btn {
+  background-color: rgb(93, 137, 102); 
+  border-color: rgb(69, 101, 75); 
+  border-radius: 15px;
+  width: 100px;
+  height: 50px;
+  margin: 10px;
+}
+
+.close-button.btn {
+  background-color: rgb(79, 77, 77);
+  border-color: rgb(94, 94, 94); 
+}
+
+.save-button.btn {
+  background-color: rgb(181, 102, 102);
+  border-color: rgb(181, 102, 102);
 }
 
 .search-results {
   padding: 1rem;
 }
-
-.result-item {
-  margin-bottom: 0.5rem;
-}
-
 /*additional styles as needed */

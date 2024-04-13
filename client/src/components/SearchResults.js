@@ -3,12 +3,15 @@
 // It's responsible for the presentation layer, taking processed data and rendering them for the user.
 import React from 'react';
 
+//may delete this as ResultsSection handles this and styling
+
 // Local function to replace <b> tags with <strong> for better formatting
 const parseHtmlToJsx = (htmlString) => {
     return htmlString.split(/<\/?b>/).map((part, index) => index % 2 === 1 ? <strong key={index}>{part}</strong> : part);
 };
 
 const SearchResults = ({ results }) => {
+  console.log(results);
   return (
     <div className="search-results">
       <h2>Results:</h2>

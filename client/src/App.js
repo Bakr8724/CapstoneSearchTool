@@ -5,16 +5,19 @@ import SearchResults from './components/SearchResults';
 import SearchController from './components/SearchController';
 import RefineSearch from './components/RefineSearch';
 import ReattemptSearch from './components/ReattemptSearch';
+import Navbar from './components/Navbar';
+           //core css
+import ResultsSection from './components/ResultsSection';
+
+
 
 function App() {
   const [results, setResults] = useState([]);  // State to store search results
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Logo Here</h1>
-      </header>
       <main>
+      <Navbar />
       <div className='search-container'>
         <SearchController setResults={setResults} />
         <div className='button-container'>
@@ -22,7 +25,8 @@ function App() {
         <ReattemptSearch />
         </div>
       </div>
-        <SearchResults results={results} />
+        {/* <SearchResults results={results} /> } may remove when SearchResults agreed to be deleted*/}
+        <ResultsSection results={results} />
       </main>
       <footer>
         {/* Footer content */}

@@ -16,7 +16,7 @@ function RefineSearch() {
       <>
         <div className="refine-search">
         <Button className="refine-search-button" variant="primary" onClick={handleShow}>
-          Refine Search
+          Refine
         </Button>
         </div>
         <Modal show={show} onHide={handleClose}>

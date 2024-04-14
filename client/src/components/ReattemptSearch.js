@@ -7,7 +7,7 @@ function ReattemptSearch() {
     return (
         <div className="reattempt-search">
         <Button className="reattempt-search-button" variant="primary" onClick={handleClick}>
-            Reattempt Search
+            Reattempt
         </Button>
         </div>
     );

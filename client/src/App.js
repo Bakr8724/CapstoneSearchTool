@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <main>
-      <Navbar />
+      <Navbar className="navbar-row"/>
       <div className='search-container'>
         <SearchController setResults={setResults} />
         <div className='button-container'>

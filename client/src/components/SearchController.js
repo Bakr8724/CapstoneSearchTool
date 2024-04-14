@@ -33,13 +33,19 @@ function SearchController({ setResults, filters }) {  // Accept `filters` as a p
 
   return (
     <div className="search-controller">
-      <input
-        type="text"
-        placeholder="What are you researching today?"
-        value={query}
-        onChange={handleInputChange}
-      />
-      <button onClick={handleSearch}>Search</button>
+      <form className="search-box" onSubmit={handleSearch}>
+        <input
+          type="text"
+          placeholder="What are you researching today?"
+          value={query}
+          onChange={handleInputChange}
+        />
+        <img 
+          src={process.env.PUBLIC_URL + '/magGlass.png'}   
+          className="search-icon" 
+          onClick={handleSearch} 
+        />
+      </form>
     </div>
   );
 }

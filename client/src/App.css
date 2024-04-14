@@ -46,7 +46,7 @@
 .search-container {
   display: grid;
   grid-template-columns: repeat(8, 1fr); 
-  grid-template-rows: repeat(auto-fill, minmax(100px, 1fr)); 
+  grid-template-rows: repeat(2, 1fr); 
   width: 100%;
 }
 
@@ -55,6 +55,7 @@
     justify-content: center;
     padding: 0.5rem;
     grid-column: span 8;
+    grid-row: 1fr;
 }
 
 .search-controller input {
@@ -69,11 +70,14 @@
 
 .search-box {
   position: relative;
+  grid-column: span 10;
   width: 50%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
   justify-content: flex-end;
+}
+
+.search-box input {
+  flex-grow: 1;
 }
 
 .search-box input:focus {
@@ -83,21 +87,29 @@
 
 .search-icon {
   position: absolute;
-  right: 10px;
-  top: 60%;
-  cursor: pointer;
-  width: 7%;
-  transform: translateY(-50%);
+  right: 10px; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  width: 50px; 
+  aspect-ratio: 1.3 / 1;
+  opacity: 0.7; 
+}
+.search-icon:hover {
+  cursor: pointer; 
+  opacity: 1; 
 }
 
 .button-container {
+  flex-direction: column; /* Stack the buttons vertically */
+  justify-content: space-around; /* Distribute the space evenly between the buttons */
+  grid-row: 1fr;
   display: flex;
   grid-column: 6; 
   grid-row: 2; 
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
   height: 100%;
-
+  flex-basis: 50px;
 }
 
 .reattempt-search {
@@ -126,6 +138,7 @@
   text-align: center;
   font-size: 1vw; 
   color: #454444;
+  height: 50%;
 }
   .reattempt-search-button.btn:hover {
     background-color: #4f85be; 
@@ -142,6 +155,15 @@
   text-align: center;
   font-size: 1vw; 
   color: #454444;
+  height: 50%;
+}
+@media screen and (min-width: 768px) {
+  .refine-search-button.btn {
+    font-size: 13px;
+  }
+  .reattempt-search-button.btn {
+    font-size: 13px;
+  }
 }
 
 .refine-search-button.btn:hover {
@@ -163,17 +185,12 @@
   border-color: #bd5e59; 
 }
 
-.close-button.btn {
-  background-color: rgb(79, 77, 77);
-  border-color: rgb(94, 94, 94); 
-}
-
-.save-button.btn {
+.apply-filter.btn {
   background-color: rgb(181, 102, 102);
   border-color: rgb(181, 102, 102);
 }
 
-.save-button.btn:hover {
+.apply-filter.btn:hover {
   background-color: rgb(219, 96, 96);
   border-color: rgb(181, 102, 102);
 }
@@ -189,6 +206,7 @@
   border-bottom: black 1.50px solid;
   font-size: 14;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2); 
+  align-items: center;
 
   & button:first-of-type {
     margin-left: auto;
@@ -200,8 +218,8 @@
 }
 
 .navbar-logo {
-  width: 15%; 
-  height: auto;
+  width: auto; 
+  height: 80%;
 }
 
 .navbar button{

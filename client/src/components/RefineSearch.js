@@ -23,7 +23,7 @@ function RefineSearch({ onApplyFilters }) {
 
     return (
     <>
-        <Button variant="primary" onClick={handleShow}>
+        <Button className="refine-search-button" variant="primary" onClick={handleShow}>
             Refine Search
         </Button>
 
@@ -57,7 +57,7 @@ function RefineSearch({ onApplyFilters }) {
                 <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
-                <Button variant="primary" onClick={handleApply}>
+                <Button className="apply-filter" variant="primary" onClick={handleApply}>
                     Apply Filters
                 </Button>
             </Modal.Footer>

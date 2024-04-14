@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/alt-text */
 //SearchController.js
 //FR Perform Search/Enter Search Query
 //Captures user input and triggers the search
 import React, { useState } from 'react';
 import axios from 'axios';  // Import Axios
 
-function SearchController({ setResults }) {  // Accept setResults as a prop to pass results to the ResultPresenter
+function SearchController({ setResults, filters }) {  // Accept `filters` as a prop
   const [query, setQuery] = useState('');
 
   const handleInputChange = (event) => {
@@ -12,10 +13,14 @@ function SearchController({ setResults }) {  // Accept setResults as a prop to p
   };
 
   const handleSearch = async (event) => {
+    event.preventDefault();
     try {
-      event.preventDefault();
       const response = await axios.get('http://localhost:5000/search', {
-        params: { query }
+        params: { 
+          query,
+          keywords: filters.keywords,
+          source: filters.source
+        }
       });
       setResults(response.data.items); // Assume the response structure has items
       console.log('Search successful', response.data.items);
@@ -28,19 +33,13 @@ function SearchController({ setResults }) {  // Accept setResults as a prop to p
 
   return (
     <div className="search-controller">
-      <form className="search-box" onSubmit={handleSearch}>
-        <input
-          type="text"
-          placeholder="What are you researching today?"
-          value={query}
-          onChange={handleInputChange}
-        />
-        <img 
-          src={process.env.PUBLIC_URL + '/magGlass.png'}   
-          className="search-icon" 
-          onClick={handleSearch} 
-        />
-      </form>
+      <input
+        type="text"
+        placeholder="What are you researching today?"
+        value={query}
+        onChange={handleInputChange}
+      />
+      <button onClick={handleSearch}>Search</button>
     </div>
   );
 }

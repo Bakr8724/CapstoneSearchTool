@@ -1,12 +1,12 @@
 import React from 'react';
 
-const ResultsSection = ({results}) => {
+const ResultsSection = ({ results }) => {
     return(
         <div className='horizontal-scroll-container'>
             {results.length > 0 ?
                 results.map((item, idx) => {
                     return(
-                        <ResultsChild result={item} key={`result-child${idx}`}/>
+                        <ResultsChild result={item} key={`result-child-${idx}`}/>
                     )
                 })
                 :
@@ -16,20 +16,43 @@ const ResultsSection = ({results}) => {
     );
 }
 
-const ResultsChild = ({result}) => {
+const ResultsChild = ({ result }) => {
+
+    // Local function to replace <b> tags with <strong> for better formatting
     const parseHtmlToJsx = (htmlString) => {
         return htmlString.split(/<\/?b>/).map((part, index) => index % 2 === 1 ? <strong key={index}>{part}</strong> : part);
     };
 
-    return(
+    const fallbackImageUrl = 'placeholder.png'; 
+
+    //For sites where image nor thumbnail available blank image shown 
+    const getImageUrl = (pagemap) => {
+        if (pagemap?.cse_image?.[0]?.src) {
+            return pagemap.cse_image[0].src;
+        } else if (pagemap?.cse_thumbnail?.[0]?.src) {
+            return pagemap.cse_thumbnail[0].src;
+        }
+        return fallbackImageUrl; 
+    };
+
+    return (
         <div className='result-container'>
-            <p>{parseHtmlToJsx(result.htmlTitle)} - <a href={result.link} target='_blank' rel="noopener noreferrer">Link</a></p>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>        
+                <a href={result.link} target='_blank'  className="clickable-title">
+                    {parseHtmlToJsx(result.htmlTitle)}
+                </a>
+            </p>
+            <p>{parseHtmlToJsx(result.snippet)}</p>
+            <a href={result.link} target='_blank' >
+                <img 
+                    src={getImageUrl(result.pagemap)}
+                    onError={(e) => {
+                        e.target.src = fallbackImageUrl; // Changes src to the blank image if unavailable
+                    }}
+                    alt="Description Image"
+                    className="result-image"
+                />
+            </a>
         </div>
     );
 }

@@ -19,7 +19,7 @@ const SearchResults = ({ results }) => {
         results.map((result, index) => (
           <div key={index} className="result-item">
             {/* Parse HTML title to JSX */}
-            <p>{parseHtmlToJsx(result.htmlTitle)} - <a href={result.link} target='_blank' rel="noopener noreferrer">Link</a></p>
+            <p>{parseHtmlToJsx(result.htmlTitle)} - <a href={result.link} target='_blank' >Link</a></p>
           </div>
         ))
       ) : (

@@ -11,8 +11,9 @@ function SearchController({ setResults }) {  // Accept setResults as a prop to p
     setQuery(event.target.value);
   };
 
-  const handleSearch = async () => {
+  const handleSearch = async (event) => {
     try {
+      event.preventDefault();
       const response = await axios.get('http://localhost:5000/search', {
         params: { query }
       });
@@ -27,13 +28,19 @@ function SearchController({ setResults }) {  // Accept setResults as a prop to p
 
   return (
     <div className="search-controller">
-      <input
-        type="text"
-        placeholder="What are you researching today?"
-        value={query}
-        onChange={handleInputChange}
-      />
-      <button onClick={handleSearch}>Search</button>
+      <form className="search-box" onSubmit={handleSearch}>
+        <input
+          type="text"
+          placeholder="What are you researching today?"
+          value={query}
+          onChange={handleInputChange}
+        />
+        <img 
+          src={process.env.PUBLIC_URL + '/magGlass.png'}   
+          className="search-icon" 
+          onClick={handleSearch} 
+        />
+      </form>
     </div>
   );
 }

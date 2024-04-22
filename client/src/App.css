@@ -280,8 +280,52 @@
   object-fit: contain;
 }
 
+.login-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  justify-content: flex-start;
+  padding: 20px 0;
+  background: linear-gradient(to bottom, #6494cb, #ffffff);
+}
 
+.logo-login {
+  width: 500px;
+  
+}
 
+.login-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  align-items: center;
+  ;
+}
 
+.login-form .label1 {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 220px;
+}
 
+.login-form .label2 {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 210px;
+} 
+
+.login-button {
+  width: 70px;
+  background-color: #92BCEA;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 100px;
+}
 /*additional styles as needed */

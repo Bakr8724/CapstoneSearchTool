@@ -5,6 +5,7 @@ import logo from '../assets/ira_logo.png';
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -14,6 +15,7 @@ const LoginPage = () => {
     const defaultPassword = '1234';
 
     if (username === defaultUserame && defaultPassword === defaultPassword) {
+        setIsLoggedIn(true);
         navigate('/');
     } else {
       alert('Invalid username or password');
@@ -22,14 +24,16 @@ const LoginPage = () => {
 
   return (
     <div className='login-page'>
-        <img src={logo} alt="Logo" className="logo-login" />
+        <div className="navbar-login-logo">
+            <img src={logo} alt='logo'/>
+        </div>
     <form className="login-form" onSubmit={handleSubmit}>
       <label class="label1">
         Username:
         <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
       </label>
-      <label class="label2">
-        Password:
+      <label className="label2">
+        Password :
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </label>
       <button className='login-button' type="submit">Log in</button>

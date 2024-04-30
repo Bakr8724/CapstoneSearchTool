@@ -29,11 +29,11 @@ const LoginPage = () => {
         </div>
     <form className="login-form" onSubmit={handleSubmit}>
       <label class="label1">
-        Username:
+        Username: 
         <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
       </label>
       <label className="label2">
-        Password :
+        Password: 
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </label>
       <button className='login-button' type="submit">Log in</button>

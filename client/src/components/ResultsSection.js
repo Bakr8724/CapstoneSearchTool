@@ -3,15 +3,17 @@ import React from 'react';
 const ResultsSection = ({ results }) => {
     return(
         <div className='horizontal-scroll-container'>
-            {results.length > 0 ?
-                results.map((item, idx) => {
-                    return(
-                        <ResultsChild result={item} key={`result-child-${idx}`}/>
-                    )
-                })
-                :
-                <p>No results found.</p>
-            }
+            <div className='scroll-wrapper'>
+                {results.length > 0 ?
+                    results.map((item, idx) => {
+                        return(
+                            <ResultsChild result={item} key={`result-child-${idx}`}/>
+                        )
+                    })
+                    :
+                    <p>No results found.</p>
+                }
+            </div>
         </div>
     );
 }
@@ -37,22 +39,22 @@ const ResultsChild = ({ result }) => {
 
     return (
         <div className='result-container'>
-            <p>
-                <a href={result.link} target='_blank'  className="clickable-title">
-                    {parseHtmlToJsx(result.htmlTitle)}
+                <p>
+                    <a href={result.link} target='_blank'  className="clickable-title">
+                        {parseHtmlToJsx(result.htmlTitle)}
+                    </a>
+                </p>
+                <p>{parseHtmlToJsx(result.snippet)}</p>
+                <a href={result.link} target='_blank' >
+                    <img 
+                        src={getImageUrl(result.pagemap)}
+                        onError={(e) => {
+                            e.target.src = fallbackImageUrl; // Changes src to the blank image if unavailable
+                        }}
+                        alt="Description Image"
+                        className="result-image"
+                    />
                 </a>
-            </p>
-            <p>{parseHtmlToJsx(result.snippet)}</p>
-            <a href={result.link} target='_blank' >
-                <img 
-                    src={getImageUrl(result.pagemap)}
-                    onError={(e) => {
-                        e.target.src = fallbackImageUrl; // Changes src to the blank image if unavailable
-                    }}
-                    alt="Description Image"
-                    className="result-image"
-                />
-            </a>
         </div>
     );
 }

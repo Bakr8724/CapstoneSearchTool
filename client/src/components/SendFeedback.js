@@ -1,10 +1,7 @@
-import logo from '../assets/ira_logo.png';
-import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
-import SendFeedback from './SendFeedback';
 
-function Navbar({ onApplyFilters }) {
+function SendFeedback({ onApplyFilters }) {
     const [show, setShow] = useState(false);
     const [keywords, setKeywords] = useState('');
     const [source, setSource] = useState('');
@@ -18,16 +15,18 @@ function Navbar({ onApplyFilters }) {
     const handleShow = () => setShow(true);
 
     const handleApply = () => {
+        onApplyFilters({ keywords, source });
+        setIsKeywordsApplied(keywords !== '');
+        setIsSourceApplied(source !== '');
         handleClose();
     };
 
     return (
     <>
-        <div className="navbar">
-            <img className="navbar-logo" src={logo} alt='logo'/>
-            <Link to="/login"><button type='button'>Login</button></Link>
-            <button type='button' variant="primary" onClick={handleShow}>Have Feedback?</button>
-        </div>
+        {/* <Button className="refine-search-button" variant="primary" onClick={handleShow}>
+            Refine Search
+        </Button> */}
+
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>Refine your search</Modal.Title>
@@ -37,11 +36,19 @@ function Navbar({ onApplyFilters }) {
                     <Form.Group className="mb-3">
                         <Form.Label>Enter feedback: {isKeywordsApplied && <span className="applied-tag">Applied</span>}</Form.Label>
                         <Form.Control 
-                            as="textarea"
-                            rows={8} 
+                            type="text" 
                             placeholder="Enter feedback" 
                             value={keywords} 
                             onChange={e => setKeywords(e.target.value)} 
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Source {isSourceApplied && <span className="applied-tag">Applied</span>}</Form.Label>
+                        <Form.Control 
+                            type="text" 
+                            placeholder="Enter source (e.g., Wikipedia)" 
+                            value={source} 
+                            onChange={e => setSource(e.target.value)} 
                         />
                     </Form.Group>
                 </Form>
@@ -59,4 +66,4 @@ function Navbar({ onApplyFilters }) {
     );
 }
 
-export default Navbar;
+export default SendFeedback;
